@@ -1,0 +1,953 @@
+/* ==========================================================================
+   CheckSelf — Cute & Kawaii Pastel Aesthetic Design System 🌸🧸✨
+   ========================================================================== */
+
+:root {
+  /* Cute & Rounded Typography */
+  --font-heading: 'Fredoka', 'Comfortaa', cursive, sans-serif;
+  --font-body: 'Comfortaa', 'Fredoka', cursive, sans-serif;
+
+  /* Kawaii Pastel Palette (Default: Soft Blossom Theme) */
+  --bg-primary: #fdf2f8;           /* bg-pink-50 */
+  --bg-secondary: #faf5ff;         /* bg-purple-50 */
+  --bg-tertiary: #fce7f3;          /* soft pastel candy pink */
+  --bg-card: rgba(255, 255, 255, 0.92);
+  --bg-card-hover: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.88);
+
+  /* Bubbly Cartoonish Pastel Borders (border-4 feel) */
+  --border-subtle: #fbcfe8;        /* border-pink-200 */
+  --border-hover: #f472b6;         /* border-pink-400 */
+  --border-focus: #c084fc;         /* border-purple-400 */
+  --border-comic-width: 4px;
+
+  /* Deep Cute Purple Text (No harsh dark blacks or grays!) */
+  --text-primary: #3b0764;         /* text-purple-950 */
+  --text-secondary: #701a75;       /* soft plum */
+  --text-muted: #a21caf;           /* pastel violet */
+
+  /* Pastel Candy Brand Accents */
+  --brand-primary: #f472b6;        /* strawberry pastel pink */
+  --brand-primary-hover: #fb7185;  /* rosy pink */
+  --brand-secondary: #c084fc;      /* lavender pastel */
+  --brand-accent: #38bdf8;         /* baby sky blue */
+  --brand-peach: #fba172;          /* peach macaron */
+
+  /* Cute Alert & Status Colors */
+  --success: #34d399;              /* mint pastel */
+  --success-bg: #ecfdf5;
+  --warning: #fbbf24;              /* buttercup pastel */
+  --warning-bg: #fffbeb;
+  --danger: #fb7185;               /* cherry blossom */
+  --danger-bg: #fff1f2;
+  --info: #60a5fa;                 /* baby blue */
+  --info-bg: #eff6ff;
+
+  /* Soft Bubbly Pastel Shadows */
+  --shadow-sm: 0 4px 12px rgba(244, 114, 182, 0.12);
+  --shadow-md: 0 8px 24px rgba(244, 114, 182, 0.18);
+  --shadow-lg: 0 14px 36px rgba(244, 114, 182, 0.22);
+  --shadow-glow: 0 0 25px rgba(244, 114, 182, 0.35);
+
+  /* Maximum Rounded Corners (rounded-2xl, rounded-3xl, pill) */
+  --radius-sm: 16px;
+  --radius-md: 24px;
+  --radius-lg: 32px;
+  --radius-xl: 40px;
+  --radius-full: 9999px;
+
+  /* Bouncy Cartoonish Micro-Animations */
+  --bounce-transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --smooth-transition: all 0.25s ease;
+}
+
+[data-theme="light"] {
+  --bg-primary: #fdf2f8;           /* bg-pink-50 */
+  --bg-secondary: #faf5ff;         /* bg-purple-50 */
+  --bg-tertiary: #fce7f3;          /* soft pastel candy pink */
+  --bg-card: rgba(255, 255, 255, 0.95);
+  --bg-card-hover: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.92);
+
+  --border-subtle: #fbcfe8;        /* border-pink-200 */
+  --border-hover: #f472b6;         /* border-pink-400 */
+  --border-focus: #c084fc;         /* border-purple-400 */
+
+  --text-primary: #3b0764;         /* text-purple-950 */
+  --text-secondary: #701a75;       /* soft plum */
+  --text-muted: #a21caf;           /* pastel violet */
+}
+
+/* Kawaii Lavender Pastel Alternative Theme 🌸💜 */
+[data-theme="dark"], [data-theme="lavender"] {
+  --bg-primary: #faf5ff;           /* bg-purple-50 */
+  --bg-secondary: #fdf2f8;         /* bg-pink-50 */
+  --bg-tertiary: #f3e8ff;          /* soft pastel lavender */
+  --bg-card: rgba(255, 255, 255, 0.95);
+  --bg-card-hover: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.92);
+
+  --border-subtle: #e9d5ff;        /* border-purple-200 */
+  --border-hover: #c084fc;         /* border-purple-400 */
+  --border-focus: #f472b6;         /* border-pink-400 */
+
+  --text-primary: #3b0764;         /* text-purple-950 */
+  --text-secondary: #581c87;       /* text-purple-900 */
+  --text-muted: #7e22ce;           /* text-purple-700 */
+
+  --shadow-sm: 0 4px 14px rgba(192, 132, 252, 0.15);
+  --shadow-md: 0 8px 24px rgba(192, 132, 252, 0.2);
+  --shadow-lg: 0 14px 36px rgba(192, 132, 252, 0.25);
+  --shadow-glow: 0 0 30px rgba(192, 132, 252, 0.35);
+}
+
+/* ==========================================================================
+   Base & Reset
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: 
+    radial-gradient(circle at 10% 15%, rgba(244, 114, 182, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 90% 85%, rgba(192, 132, 252, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(251, 146, 60, 0.08) 0%, transparent 55%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+/* Cute Pastel Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb {
+  background: #f472b6;
+  border-radius: var(--radius-full);
+  border: 3px solid var(--bg-secondary);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #fb7185;
+}
+
+/* ==========================================================================
+   Layout Architecture
+   ========================================================================== */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+.page-wrapper {
+  flex: 1;
+  padding: 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .page-wrapper {
+    padding: 16px;
+  }
+}
+
+/* ==========================================================================
+   Sidebar Styling (Cute Cartoonish Pill Menu)
+   ========================================================================== */
+.sidebar {
+  width: 290px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-right: var(--border-comic-width) solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 40;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sidebar-header {
+  padding: 24px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: var(--border-comic-width) solid var(--border-subtle);
+}
+
+.brand-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #f472b6, #c084fc, #38bdf8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 800;
+  font-size: 24px;
+  box-shadow: 0 6px 18px rgba(244, 114, 182, 0.4);
+  border: 3px solid #fff;
+  transition: var(--bounce-transition);
+}
+
+.brand-badge:hover {
+  transform: scale(1.1) rotate(6deg);
+}
+
+.brand-text h1 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  background: linear-gradient(135deg, #f43f5e 20%, #9333ea);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="dark"] .brand-text h1 {
+  background: linear-gradient(135deg, #fbcfe8 20%, #e879f9);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-text p {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.sidebar-nav {
+  padding: 18px 14px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+}
+
+.nav-section-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  padding: 8px 12px 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.92rem;
+  background: transparent;
+  border: var(--border-comic-width) solid transparent;
+  cursor: pointer;
+  transition: var(--bounce-transition);
+  text-align: left;
+  width: 100%;
+}
+
+.nav-item:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  transform: scale(1.04) translateX(4px);
+  border-color: var(--border-subtle);
+}
+
+.nav-item.active {
+  background: linear-gradient(135deg, #fce7f3, #f3e8ff);
+  color: #a21caf;
+  border-color: var(--border-hover);
+  box-shadow: 0 4px 14px rgba(244, 114, 182, 0.25);
+  transform: scale(1.02);
+}
+
+[data-theme="dark"] .nav-item.active {
+  background: linear-gradient(135deg, #581c87, #4c1d95);
+  color: #fdf4ff;
+  border-color: #f472b6;
+}
+
+.nav-badge {
+  margin-left: auto;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  background: #fdf2f8;
+  color: var(--brand-primary);
+  font-weight: 800;
+  border: 2px solid var(--border-subtle);
+}
+
+.nav-item.active .nav-badge {
+  background: var(--brand-primary);
+  color: #fff;
+  border-color: #fff;
+}
+
+.sidebar-footer {
+  padding: 16px;
+  border-top: var(--border-comic-width) solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ==========================================================================
+   Header Navbar
+   ========================================================================== */
+.header-navbar {
+  height: 76px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: var(--border-comic-width) solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: var(--bg-secondary);
+  border: var(--border-comic-width) solid var(--border-subtle);
+  color: var(--text-primary);
+  padding: 8px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--bounce-transition);
+}
+
+.mobile-menu-btn:hover {
+  transform: scale(1.08);
+}
+
+@media (max-width: 900px) {
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sidebar {
+    position: fixed;
+    transform: translateX(-100%);
+    box-shadow: var(--shadow-lg);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(88, 28, 135, 0.4);
+    backdrop-filter: blur(6px);
+    z-index: 35;
+  }
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-title-box h2 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.header-title-box p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ==========================================================================
+   Cute Bouncy Buttons & Interactions
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: var(--border-comic-width) solid transparent;
+  transition: var(--bounce-transition);
+  white-space: nowrap;
+  font-family: inherit;
+}
+
+.btn:hover {
+  transform: scale(1.06) translateY(-2px);
+  box-shadow: 0 8px 20px rgba(244, 114, 182, 0.3);
+}
+
+.btn:active {
+  transform: scale(0.96) translateY(0);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #f472b6, #c084fc);
+  color: #fff;
+  border-color: #fbcfe8;
+  box-shadow: 0 6px 16px rgba(244, 114, 182, 0.35);
+}
+.btn-primary:hover {
+  filter: brightness(1.05);
+  box-shadow: 0 10px 24px rgba(244, 114, 182, 0.45);
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border-color: var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+}
+.btn-secondary:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--border-hover);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--border-subtle);
+  color: var(--text-primary);
+}
+.btn-outline:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--border-hover);
+}
+
+.btn-danger {
+  background: var(--danger-bg);
+  color: #e11d48;
+  border-color: #fda4af;
+}
+.btn-danger:hover {
+  background: #fb7185;
+  color: #fff;
+  border-color: #f43f5e;
+}
+
+.btn-success {
+  background: var(--success-bg);
+  color: #059669;
+  border-color: #a7f3d0;
+}
+.btn-success:hover {
+  background: #34d399;
+  color: #fff;
+  border-color: #10b981;
+}
+
+.btn-icon {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: var(--radius-full);
+  background: var(--bg-card);
+  border: var(--border-comic-width) solid var(--border-subtle);
+  color: var(--text-secondary);
+}
+.btn-icon:hover {
+  color: var(--brand-primary);
+  border-color: var(--border-hover);
+  background: var(--bg-tertiary);
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  border-radius: var(--radius-full);
+}
+
+/* ==========================================================================
+   Bubbly Cards & Glassmorphism (Thick Pastel Borders)
+   ========================================================================== */
+.card {
+  background: var(--bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: var(--border-comic-width) solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 26px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--bounce-transition);
+  position: relative;
+}
+
+.card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 12px;
+}
+
+.card-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Metric / Stat Card */
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+}
+
+.stat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 12px rgba(244, 114, 182, 0.2);
+}
+
+.stat-title {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  font-weight: 700;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.stat-subtext {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Grids & Layout Helpers
+   ========================================================================== */
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+@media (max-width: 1200px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-4, .grid-3, .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Pastel Badges & Tags (Pill Shapes)
+   ========================================================================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  border: 2px solid transparent;
+}
+
+.badge-success {
+  background: #ecfdf5;
+  color: #059669;
+  border-color: #a7f3d0;
+}
+
+.badge-warning {
+  background: #fffbeb;
+  color: #d97706;
+  border-color: #fde68a;
+}
+
+.badge-danger {
+  background: #fff1f2;
+  color: #e11d48;
+  border-color: #fecdd3;
+}
+
+.badge-info {
+  background: #eff6ff;
+  color: #2563eb;
+  border-color: #bfdbfe;
+}
+
+.badge-accent {
+  background: #fdf4ff;
+  color: #c026d3;
+  border-color: #f5d0fe;
+}
+
+/* ==========================================================================
+   Cute Forms, Inputs & Filters
+   ========================================================================== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.form-control, .form-select, textarea.form-control {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  border: var(--border-comic-width) solid var(--border-subtle);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: var(--bounce-transition);
+  outline: none;
+}
+
+.form-control:focus, .form-select:focus, textarea.form-control:focus {
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 4px rgba(244, 114, 182, 0.25);
+  background: #ffffff;
+  transform: scale(1.01);
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-card);
+  border: var(--border-comic-width) solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  padding: 10px 18px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--bounce-transition);
+}
+
+.search-bar:focus-within {
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 4px rgba(244, 114, 182, 0.2);
+}
+
+.search-bar input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  width: 100%;
+  font-family: inherit;
+  font-weight: 600;
+}
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   Modals & Popups
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(88, 28, 135, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 16px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-content {
+  background: var(--bg-card);
+  border: var(--border-comic-width) solid var(--border-hover);
+  border-radius: var(--radius-xl);
+  width: 100%;
+  max-width: 580px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  animation: modalScaleUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal-header {
+  padding: 22px 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: var(--border-comic-width) solid var(--border-subtle);
+}
+
+.modal-body {
+  padding: 26px;
+}
+
+.modal-footer {
+  padding: 18px 26px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  border-top: var(--border-comic-width) solid var(--border-subtle);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalScaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.88) translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Kanban Board (DevTrack)
+   ========================================================================== */
+.kanban-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .kanban-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.kanban-col {
+  background: var(--bg-card);
+  border: var(--border-comic-width) solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 20px;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.kanban-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: var(--border-comic-width) solid var(--border-subtle);
+}
+
+/* ==========================================================================
+   Habitly Streak Tracker (Cute Pill Bubbles)
+   ========================================================================== */
+.habit-days-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.habit-day-bubble {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 800;
+  cursor: pointer;
+  border: var(--border-comic-width) solid var(--border-subtle);
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+  transition: var(--bounce-transition);
+}
+
+.habit-day-bubble:hover {
+  border-color: var(--border-hover);
+  transform: scale(1.15) translateY(-3px);
+}
+
+.habit-day-bubble.done {
+  color: #fff;
+  border-color: #fff;
+  box-shadow: 0 4px 14px rgba(244, 114, 182, 0.4);
+}
+
+
+/* ==========================================================================
+   Progress Bars
+   ========================================================================== */
+.progress-track {
+  width: 100%;
+  height: 12px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+  border: 2px solid var(--border-subtle);
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 50px 24px;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.empty-state-icon {
+  width: 68px;
+  height: 68px;
+  border-radius: var(--radius-full);
+  background: var(--bg-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand-primary);
+  border: var(--border-comic-width) solid var(--border-subtle);
+}
+
+/* Table Hover Effect */
+.table-row-hover:hover {
+  background-color: var(--bg-tertiary);
+}
